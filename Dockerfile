@@ -32,11 +32,15 @@ RUN apt-get install -y \
   
 RUN apt-get install -y \
   curl \
+  emacs \
   git
     
 ENV PERL_MM_USE_DEFAULT 1
-WORKDIR /SequenceCenter 
-ADD . .
-RUN git clone https://github.com/MG-RAST/Retina.git
+WORKDIR /usr/local/apache2/htdocs/ 
 RUN git clone https://github.com/paczian/authServer.git
+ADD . SequenceCenter
+RUN cd SequenceCenter && \
+  git clone https://github.com/MG-RAST/Retina.git
+  
+
 
